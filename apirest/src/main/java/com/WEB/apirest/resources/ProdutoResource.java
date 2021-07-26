@@ -2,10 +2,8 @@ package com.WEB.apirest.resources;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
 import java.util.stream.Collectors;
 
-import org.hibernate.engine.internal.Collections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -68,7 +66,7 @@ public class ProdutoResource {
 	}
 
 	@GetMapping("/filter")
-	@ApiOperation(value = "Retorna todos os produtos que possuem o nome passado")
+	@ApiOperation(value = "Retorna todos os produtos que possuem a descrição passada")
 	public List<Produto> listaProdutosFiltrados(@RequestParam("desc") String desc){
 		return this.produtoRepository.findByDescricao(desc).stream().map(p -> p).collect(Collectors.toList());
 	}
